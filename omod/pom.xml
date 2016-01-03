@@ -6,7 +6,6 @@
 		<artifactId>pmtct</artifactId>
 		<version>0.1.3.8-SNAPSHOT</version>
 	</parent>
-	<groupId>org.openmrs.module</groupId>
 	<artifactId>pmtct-omod</artifactId>
 	<packaging>jar</packaging>
 	<name>MOH-TRAC : PMTCT OMOD</name>
@@ -27,11 +26,6 @@
 		<dependency>
 			<groupId>org.openmrs.web</groupId>
 			<artifactId>openmrs-web</artifactId>
-			<type>jar</type>
-		</dependency>
-		<dependency>
-			<groupId>org.openmrs.test</groupId>
-			<artifactId>openmrs-test</artifactId>
 			<type>jar</type>
 		</dependency>
 	</dependencies>
@@ -94,13 +88,6 @@
 				<artifactId>maven-openmrs-plugin</artifactId>
 				<extensions>true</extensions>
 				<executions>
-					<execution>
-						<id>init</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>initialize-module</goal>
-						</goals>
-					</execution>
 					<execution>
 						<id>pack</id>
 						<phase>package</phase>
