@@ -23,6 +23,7 @@ import org.apache.commons.logging.LogFactory;
 import org.openmrs.GlobalProperty;
 import org.openmrs.api.AdministrationService;
 import org.openmrs.api.context.Context;
+import org.openmrs.module.mohtracportal.service.MohTracPortalService;
 import org.openmrs.module.pmtct.PMTCTModuleTag;
 import org.openmrs.module.pmtct.util.PMTCTConfigurationUtils;
 import org.openmrs.web.WebConstants;
@@ -71,7 +72,7 @@ public class PmtctConfigurationController extends ParameterizableViewController 
 //			pmtctConfig.put("existingAttributeTypes", Context.getPersonService().getAllPersonAttributeTypes());
 			pmtctConfig.put("existingEncTypes", Context.getEncounterService().getAllEncounterTypes());
 			pmtctConfig.put("existingIdentifierTypes", Context.getPatientService().getAllPatientIdentifierTypes());
-			pmtctConfig.put("existingDrugOrderTypes", Context.getOrderService().getAllOrderTypes());
+			pmtctConfig.put("existingDrugOrderTypes", Context.getService(MohTracPortalService.class).getAllOrderTypes(false));
 			pmtctConfig.put("existingRelationshipTypes", Context.getPersonService().getAllRelationshipTypes());
 			
 			mav.addObject("pmtctConfigured", Context.getAdministrationService().getGlobalPropertyObject("pmtct.configured"));
