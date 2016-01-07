@@ -23,9 +23,9 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.SQLQuery;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.openmrs.api.context.Context;
+import org.openmrs.api.db.hibernate.DbSession;
+import org.openmrs.api.db.hibernate.DbSessionFactory;
 import org.openmrs.module.mohtracportal.util.MohTracUtil;
 import org.openmrs.module.pmtct.db.PmtctService;
 import org.openmrs.module.pmtct.util.PMTCTConfigurationUtils;
@@ -36,21 +36,21 @@ import org.openmrs.module.pmtct.util.PMTCTConstants;
  */
 public class HibernatePmtctDAO implements PmtctService {
 	
-	private SessionFactory sessionFactory;
+	private DbSessionFactory sessionFactory;
 	
 	private Log log = LogFactory.getLog(HibernatePmtctDAO.class);
 	
 	/**
 	 * @return the sessionFactory
 	 */
-	public SessionFactory getSessionFactory() {
+	public DbSessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
 	
 	/**
 	 * @param sessionFactory the sessionFactory to set
 	 */
-	public void setSessionFactory(SessionFactory sessionFactory) {
+	public void setSessionFactory(DbSessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 	
@@ -59,10 +59,10 @@ public class HibernatePmtctDAO implements PmtctService {
 	 * 
 	 * @return
 	 */
-	private Session getSession() {
-		if (getSessionFactory().isClosed())
+	private DbSession getSession() {
+		if (getSessionFactory().getHibernateSessionFactory().isClosed())
 			log.info(">>>>PMTCT_DAO>> sessionFactory is closed!");
-		Session session = getSessionFactory().getCurrentSession();
+		DbSession session = getSessionFactory().getCurrentSession();
 		if (session == null) {
 			Context.closeSession();
 			Context.openSession();
@@ -70,7 +70,7 @@ public class HibernatePmtctDAO implements PmtctService {
 				session = getSessionFactory().getCurrentSession();
 			}
 			catch (Exception e) {
-				log.error(">>>>>>>>PMTCT_DAO>> Session Error : " + session);
+				log.error(">>>>>>>>PMTCT_DAO>> DbSession Error : " + session);
 				e.printStackTrace();
 			}
 		}
