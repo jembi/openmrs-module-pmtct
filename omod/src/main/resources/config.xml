@@ -24,7 +24,7 @@
 	-->
 	<!-- /PMTCT Module Properties -->
 
-	<require_version>1.6.2.12911</require_version>
+	<require_version>1.9.9</require_version>
 
 	<!-- Extensions configuration-->
 	<extension>
