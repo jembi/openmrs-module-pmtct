@@ -33,7 +33,7 @@
                     </property>
                     <property name="target">
                         <bean
-                            class="@MODULE_PACKAGE@.db.hibernate.HibernatePmtctDAO">
+                            class="org.openmrs.module.pmtct.db.hibernate.HibernatePmtctDAO">
                             <property name="sessionFactory">
                                 <ref bean="dbSessionFactory" />
                             </property>
