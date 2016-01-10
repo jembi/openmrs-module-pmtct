@@ -5,7 +5,7 @@
 <openmrs:portlet url="patientHeader" id="patientDashboardHeader" patientId="${param.patientId}"/>
 <br/>
 
-<h2 style="display:inline;"><spring:message code="@MODULE_ID@.pmtctTitle"/>: </h2><span style="font-size: 15px" class="infoPatientLabel"><spring:message code="@MODULE_ID@.familyplanning.title"/></span>
+<h2 style="display:inline;"><spring:message code="pmtct.pmtctTitle"/>: </h2><span style="font-size: 15px" class="infoPatientLabel"><spring:message code="pmtct.familyplanning.title"/></span>
 <br/><br/>
 
 <div>
@@ -37,8 +37,8 @@
 
 <div id="patientTabs">
 	<ul>
-		<li><a hidefocus="hidefocus" onclick="return changeTab(this);" href="#" id="appointmentTab" class="current "><spring:message code="@MODULE_ID@.familyplanning.visits"/></a></li>
-		<li><a hidefocus="hidefocus" onclick="return changeTab(this);" href="#" id="historyTab"><spring:message code="@MODULE_ID@.familyplanning.history"/></a></li>
+		<li><a hidefocus="hidefocus" onclick="return changeTab(this);" href="#" id="appointmentTab" class="current "><spring:message code="pmtct.familyplanning.visits"/></a></li>
+		<li><a hidefocus="hidefocus" onclick="return changeTab(this);" href="#" id="historyTab"><spring:message code="pmtct.familyplanning.history"/></a></li>
 	</ul>
 </div>
 		
@@ -47,7 +47,7 @@
 		<input id="add_visit" type="button" value="Add Next Visit Date"/><br/>
 		<div>
 			<div class="list_title">
-				<div class="list_title_msg"><spring:message code="@MODULE_ID@.familyplanning.history"/></div>
+				<div class="list_title_msg"><spring:message code="pmtct.familyplanning.history"/></div>
 				<div class="list_title_bts">
 					&nbsp;			
 				</div>
@@ -62,7 +62,7 @@
 					<th class="columnHeader">Provider</th>
 					<th class="columnHeader">Created</th>
 				</tr>
-				<!-- <c:if test="${empty numberOfPages}"><tr><td colspan="2"><center><spring:message code="@MODULE_ID@.tablelist.empty"/></center></td></tr></c:if> -->
+				<!-- <c:if test="${empty numberOfPages}"><tr><td colspan="2"><center><spring:message code="pmtct.tablelist.empty"/></center></td></tr></c:if> -->
 				<c:forEach items="1,2,3,4" var="history" varStatus="status">
 					<tr class="${status.count%2!=0?'even':''}">
 						<td class="rowValue">${status.count}.</td>
@@ -86,7 +86,7 @@
 	
 	<div id="history" style="display: none;">
 		<div id="list_title">
-			<div class="list_title_msg"><spring:message code="@MODULE_ID@.familyplanning.history"/></div>
+			<div class="list_title_msg"><spring:message code="pmtct.familyplanning.history"/></div>
 			<div class="list_title_bts">
 				&nbsp;			
 			</div>
@@ -102,7 +102,7 @@
 				<th class="columnHeader">Raison de sortie du Programme</th>
 				<th class="columnHeader">Observations</th>
 			</tr>
-			<!-- <c:if test="${empty numberOfPages}"><tr><td colspan="2"><center><spring:message code="@MODULE_ID@.tablelist.empty"/></center></td></tr></c:if> -->
+			<!-- <c:if test="${empty numberOfPages}"><tr><td colspan="2"><center><spring:message code="pmtct.tablelist.empty"/></center></td></tr></c:if> -->
 			<c:forEach items="1,2,3,4" var="history" varStatus="status">
 				<tr class="${status.count%2!=0?'even':''}">
 					<td class="rowValue">${status.count}.</td>

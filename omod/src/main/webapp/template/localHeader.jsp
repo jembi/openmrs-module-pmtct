@@ -2,7 +2,7 @@
 
 <pmtct_tag:checkConfigurations/> -->
 
-<openmrs:require privilege="View patients in PMTCT" otherwise="/login.htm" redirect="/module/@MODULE_ID@/patientInPmtct.list?page=1" />
+<openmrs:require privilege="View patients in PMTCT" otherwise="/login.htm" redirect="/module/pmtct/patientInPmtct.list?page=1" />
 
 <h2 style="display: inline;"><spring:message code="pmtct.overviewBoxTitle"/> :: 
 <span style="color:#8FABC7;"><spring:message code="pmtct.menu.statisticsTitle"/></span></h2>

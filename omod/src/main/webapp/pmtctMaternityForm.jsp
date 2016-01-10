@@ -1,7 +1,7 @@
 <%@ include file="template/localIncludes.jsp"%>
 <!-- ************************************************************* -->
 
-<openmrs:require privilege="Add Maternity information" otherwise="/login.htm" redirect="/module/@MODULE_ID@/addMaternityForm.form" />
+<openmrs:require privilege="Add Maternity information" otherwise="/login.htm" redirect="/module/pmtct/addMaternityForm.form" />
 
 <!-- <spring:hasBindErrors name="pmtctMaternity">
 	<spring:message code="fix.error"/>
@@ -13,34 +13,34 @@
 <openmrs:portlet url="patientHeader" id="patientDashboardHeader" patientId="${patient.patientId}"/>
 <br/>
 
-<h2 style="display:inline;"><spring:message code="@MODULE_ID@.pmtctTitle"/> : </h2><span style="font-size: 15px" class="infoPatientLabel"><spring:message code="@MODULE_ID@.maternity.title" /></span>
+<h2 style="display:inline;"><spring:message code="pmtct.pmtctTitle"/> : </h2><span style="font-size: 15px" class="infoPatientLabel"><spring:message code="pmtct.maternity.title" /></span>
 <br/><br/>
 
 <div>
-	<a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient.patientId}"><spring:message code="@MODULE_ID@.general.viewPatientDashboard"/></a>
+	<a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient.patientId}"><spring:message code="pmtct.general.viewPatientDashboard"/></a>
 </div>
 
 <div id="patientTabs">
 	<ul>
-		<li><a hidefocus="hidefocus" onclick="return changeTab(this);" href="#" id="requiredInfosTab" class="current"><spring:message code="@MODULE_ID@.general.requiredInfoTitle"/></a></li>
-		<li><a hidefocus="hidefocus" onclick="return changeTab(this);" href="#" id="motherInfosTab"><spring:message code="@MODULE_ID@.maternity.motherInfo"/></a></li>
-		<li><a hidefocus="hidefocus" onclick="return changeTab(this);" href="#" id="childInfosTab"><spring:message code="@MODULE_ID@.maternity.childInfo"/></a></li>
+		<li><a hidefocus="hidefocus" onclick="return changeTab(this);" href="#" id="requiredInfosTab" class="current"><spring:message code="pmtct.general.requiredInfoTitle"/></a></li>
+		<li><a hidefocus="hidefocus" onclick="return changeTab(this);" href="#" id="motherInfosTab"><spring:message code="pmtct.maternity.motherInfo"/></a></li>
+		<li><a hidefocus="hidefocus" onclick="return changeTab(this);" href="#" id="childInfosTab"><spring:message code="pmtct.maternity.childInfo"/></a></li>
 	</ul>
 </div>
 
 <form name="pmtctForm" method="post" action="addMaternityForm.form?patientId=${patient.patientId}&save=true">
 	
 	<div id="requiredInfos">
-	<span title="<spring:message code="@MODULE_ID@.general.nextstep"/>" class="nextPrevious next2Tab2"><spring:message code="@MODULE_ID@.general.nextstep"/>&nbsp;&gt;&gt;</span>
+	<span title="<spring:message code="pmtct.general.nextstep"/>" class="nextPrevious next2Tab2"><spring:message code="pmtct.general.nextstep"/>&nbsp;&gt;&gt;</span>
 	<br/><br/>
 	
-		<div class="boxHeader"><spring:message code="@MODULE_ID@.general.requiredInfoTitle"/></div>
+		<div class="boxHeader"><spring:message code="pmtct.general.requiredInfoTitle"/></div>
 		<div class="box">
 			<table>
 				<tr>
 					<td><spring:message code="Encounter.datetime" /></td>
 					<td><c:if test="${displayHelpMessage=='true'}">
-							<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+							<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 					</c:if></td>
 					<td><input name="encounterDate" value="${todayDate}" size="11" id="encounterDate" type="text" onclick="showCalendar(this)" /></td>
 					<td><span id="encounterDateError"></span></td>
@@ -48,7 +48,7 @@
 				<tr>
 					<td><spring:message code="Encounter.location" /></td>
 					<td><c:if test="${displayHelpMessage=='true'}">
-							<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+							<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 					</c:if></td>
 					<td><openmrs_tag:locationField formFieldName="location" initialValue="${defaultLocation.locationId}" /></td>
 					<td><span id="locationError"></span></td>
@@ -56,7 +56,7 @@
 				<tr>
 					<td><spring:message code="Encounter.provider" /></td>
 					<td><c:if test="${displayHelpMessage=='true'}">
-							<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+							<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 					</c:if></td>
 					<td><openmrs_tag:userField roles="Provider" formFieldName="provider" initialValue="${defaultProvider.userId}" /></td>
 					<td><span id="providerError"></span></td>
@@ -65,23 +65,23 @@
 		</div>
 		<br/>
 		
-		<span title="<spring:message code="@MODULE_ID@.general.nextstep"/>" class="nextPrevious next2Tab2"><spring:message code="@MODULE_ID@.general.nextstep"/>&nbsp;&gt;&gt;</span>
+		<span title="<spring:message code="pmtct.general.nextstep"/>" class="nextPrevious next2Tab2"><spring:message code="pmtct.general.nextstep"/>&nbsp;&gt;&gt;</span>
 	</div>
 	
 	<div id="motherInfos" style="display: none">
-	<span title="<spring:message code="@MODULE_ID@.general.previousstep"/>" class="nextPrevious previous2Tab1">&lt;&lt;&nbsp;<spring:message code="@MODULE_ID@.general.previousstep"/></span>
-	<span title="<spring:message code="@MODULE_ID@.general.nextstep"/>" class="nextPrevious next2Tab3"><spring:message code="@MODULE_ID@.general.nextstep"/>&nbsp;&gt;&gt;</span>
+	<span title="<spring:message code="pmtct.general.previousstep"/>" class="nextPrevious previous2Tab1">&lt;&lt;&nbsp;<spring:message code="pmtct.general.previousstep"/></span>
+	<span title="<spring:message code="pmtct.general.nextstep"/>" class="nextPrevious next2Tab3"><spring:message code="pmtct.general.nextstep"/>&nbsp;&gt;&gt;</span>
 	<br/><br/>
 		
 		<div>
 			<div style="float: left; width: 50%;">
-				<div class="boxHeader"><spring:message code="@MODULE_ID@.maternity.motherInfo"/></div>
+				<div class="boxHeader"><spring:message code="pmtct.maternity.motherInfo"/></div>
 				<div class="box">
 					<table>
 						<tr>
 							<td width="50%">${pmtcttag:conceptNameById(testHivWorkroomId)}</td>
 							<td><c:if test="${displayHelpMessage=='true'}">
-									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 							</c:if></td>
 							<td>
 								<select id="hivTestWorkroomId" name="testHivWorkroom">
@@ -94,7 +94,7 @@
 						<tr>
 							<td><span class="hivStatusPkg">${pmtcttag:conceptNameById(resultHivTestId)}</span></td>
 							<td><span class="hivStatusPkg"><c:if test="${displayHelpMessage=='true'}">
-									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 							</c:if></span></td>
 							<td><span class="hivStatusPkg">
 								<select name="resultHivTest" id="resultHivTest">
@@ -114,7 +114,7 @@
 						<tr>
 							<td>${pmtcttag:conceptNameById(dpaId)}</td>
 							<td><c:if test="${displayHelpMessage=='true'}">
-									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 							</c:if></td>
 							<td>
 								<input name="dpaDate" id="dpaDate" value="${dpa}" size="11" type="text" onclick="showCalendar(this)" />
@@ -128,7 +128,7 @@
 						<tr>
 							<td>${pmtcttag:conceptNameById(dateConfinementId)}</td>
 							<td><c:if test="${displayHelpMessage=='true'}">
-									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 							</c:if></td>
 							<td>
 								<input id="dateOfConfinementId" name="dateConfinement" value="" size="11"
@@ -139,7 +139,7 @@
 						<tr>
 							<td>${pmtcttag:conceptNameById(takingAntiRetroviralForPmtctId)}</td>
 							<td><c:if test="${displayHelpMessage=='true'}">
-									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 							</c:if></td>
 							<td colspan="2"><select name="ARVReceived">
 									<option value="0"><spring:message code="general.no"/></option>
@@ -152,13 +152,13 @@
 			</div>
 			
 			<div style="float: right; width: 50%;">
-				<div class="boxHeader"><spring:message code="@MODULE_ID@.maternity.motherInfo"/></div>
+				<div class="boxHeader"><spring:message code="pmtct.maternity.motherInfo"/></div>
 				<div class="box">
 					<table>
 						<tr>
 							<td>${pmtcttag:conceptNameById(prophylaxisId)}</td>
 							<td><c:if test="${displayHelpMessage=='true'}">
-									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 							</c:if></td>
 							<td>
 								<select name="prophylaxis">
@@ -171,7 +171,7 @@
 						<tr>
 							<td>${pmtcttag:conceptNameById(transferOutDateId)}</td>
 							<td><c:if test="${displayHelpMessage=='true'}">
-									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 							</c:if></td>
 							<td>
 								<input name="transferOutDate" id="transferOutDate" value="" size="11"
@@ -182,7 +182,7 @@
 						<tr>
 							<td id="childBornStatus">${pmtcttag:conceptNameById(chirdBornStatusId)}</td>
 							<td><c:if test="${displayHelpMessage=='true'}">
-									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 							</c:if></td>
 							<td>
 								<input name="bornDeadConceptId" value="" size="5"
@@ -200,7 +200,7 @@
 						<tr>
 							<td>${pmtcttag:conceptNameById(commentId)}</td>
 							<td><c:if test="${displayHelpMessage=='true'}">
-									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 							</c:if></td>
 							<td>
 								<textarea cols="40" rows="3" name="comment"></textarea>
@@ -216,16 +216,16 @@
 		</div>
 		<br/>
 		
-		<span title="<spring:message code="@MODULE_ID@.general.previousstep"/>" class="nextPrevious previous2Tab1">&lt;&lt;&nbsp;<spring:message code="@MODULE_ID@.general.previousstep"/></span>
-		<span title="<spring:message code="@MODULE_ID@.general.nextstep"/>" class="nextPrevious next2Tab3"><spring:message code="@MODULE_ID@.general.nextstep"/>&nbsp;&gt;&gt;</span>
+		<span title="<spring:message code="pmtct.general.previousstep"/>" class="nextPrevious previous2Tab1">&lt;&lt;&nbsp;<spring:message code="pmtct.general.previousstep"/></span>
+		<span title="<spring:message code="pmtct.general.nextstep"/>" class="nextPrevious next2Tab3"><spring:message code="pmtct.general.nextstep"/>&nbsp;&gt;&gt;</span>
 	</div>
 	
 	<!-- ========= Concerning the child======= -->
 	<div id="childInfos" style="display: none">
-	<span title="<spring:message code="@MODULE_ID@.general.previousstep"/>" class="nextPrevious previous2Tab2">&lt;&lt;&nbsp;<spring:message code="@MODULE_ID@.general.previousstep"/></span>
+	<span title="<spring:message code="pmtct.general.previousstep"/>" class="nextPrevious previous2Tab2">&lt;&lt;&nbsp;<spring:message code="pmtct.general.previousstep"/></span>
 	<br/><br/>
 	
-	<span class="noOrdersMessage" id="childBornDeadMsg" style="display: block;margin:15px">(<spring:message code="@MODULE_ID@.maternity.childBornDead"/>)</span>
+	<span class="noOrdersMessage" id="childBornDeadMsg" style="display: block;margin:15px">(<spring:message code="pmtct.maternity.childBornDead"/>)</span>
 	<div id="newBornInfo">
 	
 		<%@ include file="template/infantBornList.jsp"%><br/><br/>
@@ -233,7 +233,7 @@
 	</div>
 	<br/>
 		
-		<span title="<spring:message code="@MODULE_ID@.general.previousstep"/>" class="nextPrevious previous2Tab2">&lt;&lt;&nbsp;<spring:message code="@MODULE_ID@.general.previousstep"/></span>
+		<span title="<spring:message code="pmtct.general.previousstep"/>" class="nextPrevious previous2Tab2">&lt;&lt;&nbsp;<spring:message code="pmtct.general.previousstep"/></span>
 		<input type="button" id="bt_save" value="<spring:message code="general.save" />" />
 	</div>
 	<div align="center"></div>
@@ -307,7 +307,7 @@
 
 			$j("#bt_save").click( function() {
 				if(validateInfantFormFields() && validateMotherFormFields()){
-					if(confirm("<spring:message code='@MODULE_ID@.general.message.confirm.save'/>"))
+					if(confirm("<spring:message code='pmtct.general.message.confirm.save'/>"))
 						this.form.submit();
 						//alert("It looks Ok for submission !");						
 				}
@@ -393,7 +393,7 @@
 				}
 
 				if(!valid){
-					$j("#errorDivId").html("<spring:message code='@MODULE_ID@.error.fix'/>");
+					$j("#errorDivId").html("<spring:message code='pmtct.error.fix'/>");
 					$j("#errorDivId").addClass("error");
 				} else {
 					$j("#errorDivId").html("");

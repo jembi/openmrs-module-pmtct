@@ -12,12 +12,6 @@
 	<description>OpenMRS module project for MOH-TRAC : PMTCT</description>
 
 	<dependencies>
-	
-		<dependency>
-			<groupId>org.openmrs.module</groupId>
-			<artifactId>mohtracportal-api</artifactId>
-			<version>0.2.5</version>
-		</dependency>
 		<dependency>
 			<groupId>org.openmrs.module</groupId>
 			<artifactId>pmtct-api</artifactId>

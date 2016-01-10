@@ -26,5 +26,5 @@
 
 
 <c:if test="${pmtctModuleConfigured=='false'}">
-	<c:redirect url="/module/@MODULE_ID@/config.htm" />
+	<c:redirect url="/module/pmtct/config.htm" />
 </c:if>

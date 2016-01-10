@@ -1,5 +1,5 @@
 <div class="list_container">
-	<div class="list_title"><spring:message code="@MODULE_ID@.graph.details"/></div>
+	<div class="list_title"><spring:message code="pmtct.graph.details"/></div>
 		<div style="overflow: scroll; max-height: 150px;">
 			<table class="list_data">
 				<tr>

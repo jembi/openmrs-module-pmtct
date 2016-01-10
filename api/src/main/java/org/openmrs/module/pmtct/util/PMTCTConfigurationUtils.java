@@ -52,8 +52,7 @@ public class PMTCTConfigurationUtils {
 	public static boolean isConfigured() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject("pmtct.configured");
-		return (gp != null) ? ((gp.getPropertyValue().compareToIgnoreCase(
-				"true") == 0) ? true : false) : true;
+		return (gp != null && gp.getPropertyValue() != null) ? ((gp.getPropertyValue().compareToIgnoreCase("true") == 0) ? true : false) : true;
 	}
 	
 	/**
@@ -304,7 +303,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static Integer getDrugOrderTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.ordertype");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -317,7 +316,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static Integer getCPNIdentifierTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.identifiertype.anc");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 	
@@ -330,7 +329,7 @@ public class PMTCTConfigurationUtils {
 	 */
 	public static Integer getRelationshipTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService().getGlobalPropertyObject("pmtct.relationshiptype.motherchild");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer.parseInt(gp.getPropertyValue())
 		        : null;
 	}
 }

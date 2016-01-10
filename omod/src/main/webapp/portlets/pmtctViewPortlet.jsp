@@ -1,12 +1,12 @@
 <%@ include file="/WEB-INF/template/include.jsp"%>
 <%@ taglib prefix="pmtcttag" uri="/WEB-INF/view/module/pmtct/taglibs/pmtcttag.tld" %>
-<openmrs:htmlInclude file="/moduleResources/@MODULE_ID@/pmtctstyle.css" />
+<openmrs:htmlInclude file="/moduleResources/pmtct/pmtctstyle.css" />
 
-<b class="boxHeader"><spring:message code="@MODULE_ID@.overviewBoxTitle" /></b>
+<b class="boxHeader"><spring:message code="pmtct.overviewBoxTitle" /></b>
 <c:if test="${pmtctModuleConfigured=='false'}">
 	<div class="box">
-		<span class="error"><spring:message code="@MODULE_ID@.config.configurationNotDone"/></span><br/><br/>
-		&rArr;&nbsp;<a href="module/@MODULE_ID@/config.htm"><spring:message code="@MODULE_ID@.config.configureModule"/></a>
+		<span class="error"><spring:message code="pmtct.config.configurationNotDone"/></span><br/><br/>
+		&rArr;&nbsp;<a href="module/pmtct/config.htm"><spring:message code="pmtct.config.configureModule"/></a>
 	</div>
 </c:if>
 
@@ -18,44 +18,44 @@
 			<c:forEach items="${pmtctprogram}" var="p">
 				
 				<c:if test="${p.dateCompleted==null}">
-					<h3 class="currentProgram"><openmrs:formatDate date="${p.dateEnrolled}"/> - <spring:message code="@MODULE_ID@.general.now"/></h3>
+					<h3 class="currentProgram"><openmrs:formatDate date="${p.dateEnrolled}"/> - <spring:message code="pmtct.general.now"/></h3>
 					<p>
 						<openmrs:hasPrivilege privilege='Add ANC and follow-up information'>						
 							<c:if test="${pmtcttag:currentEncounterId(pmtctObjects.cpnencs,p.dateEnrolled)==''}">
-								&rArr;&nbsp;<a href="module/@MODULE_ID@/addCPNInfoForm.form?patientId=${pmtctObjects.patient.patientId}"><spring:message code="@MODULE_ID@.portlet.addCPNInfo" /></a>
+								&rArr;&nbsp;<a href="module/pmtct/addCPNInfoForm.form?patientId=${pmtctObjects.patient.patientId}"><spring:message code="pmtct.portlet.addCPNInfo" /></a>
 								<br />
 							</c:if>
 						</openmrs:hasPrivilege>
 						
 						<openmrs:hasPrivilege privilege='View PMTCT patients in ANC'>
 							<c:if test="${pmtcttag:currentEncounterId(pmtctObjects.cpnencs,p.dateEnrolled)!=''}">
-								<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/><a href="module/@MODULE_ID@/viewCPNInfo.htm?patientId=${pmtctObjects.patient.patientId}&encounterId=${pmtcttag:currentEncounterId(pmtctObjects.cpnencs,p.dateEnrolled)}"><spring:message code="@MODULE_ID@.portlet.viewCPNInfo" /></a>
+								<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/><a href="module/pmtct/viewCPNInfo.htm?patientId=${pmtctObjects.patient.patientId}&encounterId=${pmtcttag:currentEncounterId(pmtctObjects.cpnencs,p.dateEnrolled)}"><spring:message code="pmtct.portlet.viewCPNInfo" /></a>
 								 <br />
 							</c:if>
 						</openmrs:hasPrivilege>
 							
 						<openmrs:hasPrivilege privilege='Add ANC and follow-up information'>
-							&rArr;&nbsp;<a href="module/@MODULE_ID@/followupMotherForm.form?patientId=${pmtctObjects.patient.patientId}&edit=${p.dateCompleted==null}"><spring:message code="@MODULE_ID@.portlet.addFollowupMotherInfo" /></a>
+							&rArr;&nbsp;<a href="module/pmtct/followupMotherForm.form?patientId=${pmtctObjects.patient.patientId}&edit=${p.dateCompleted==null}"><spring:message code="pmtct.portlet.addFollowupMotherInfo" /></a>
 							<br />
 						</openmrs:hasPrivilege>
 						
 						<openmrs:hasPrivilege privilege='Add Maternity information'>
 							<c:if test="${pmtcttag:currentEncounterId(pmtctObjects.maternityencs,p.dateEnrolled)==''}">
-								&rArr;&nbsp;<a href="module/@MODULE_ID@/addMaternityForm.form?patientId=${pmtctObjects.patient.patientId}"><spring:message code="@MODULE_ID@.portlet.addMaternityInfo" /></a>
+								&rArr;&nbsp;<a href="module/pmtct/addMaternityForm.form?patientId=${pmtctObjects.patient.patientId}"><spring:message code="pmtct.portlet.addMaternityInfo" /></a>
 								<br />
 							</c:if>
 						</openmrs:hasPrivilege>
 						
 						<openmrs:hasPrivilege privilege='View PMTCT patients in maternity'>
 							<c:if test="${pmtcttag:currentEncounterId(pmtctObjects.maternityencs,p.dateEnrolled)!=''}">
-								<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/><a href="module/@MODULE_ID@/viewMaternityInfo.htm?patientId=${pmtctObjects.patient.patientId}&encounterId=${pmtcttag:currentEncounterId(pmtctObjects.maternityencs,p.dateEnrolled)}"><spring:message code="@MODULE_ID@.portlet.viewMaternityInfo" /></a>
+								<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/><a href="module/pmtct/viewMaternityInfo.htm?patientId=${pmtctObjects.patient.patientId}&encounterId=${pmtcttag:currentEncounterId(pmtctObjects.maternityencs,p.dateEnrolled)}"><spring:message code="pmtct.portlet.viewMaternityInfo" /></a>
 								<br/>
 							</c:if>
 						</openmrs:hasPrivilege>
 						
 						<openmrs:hasPrivilege privilege='View PMTCT flowsheet'>
 							<br />
-							**&nbsp;<a href="module/@MODULE_ID@/pmtctFlowsheet.list?patientId=${pmtctObjects.patient.patientId}"><b><spring:message code="@MODULE_ID@.portlet.flowsheet" /></b></a>
+							**&nbsp;<a href="module/pmtct/pmtctFlowsheet.list?patientId=${pmtctObjects.patient.patientId}"><b><spring:message code="pmtct.portlet.flowsheet" /></b></a>
 						</openmrs:hasPrivilege>
 					</p>
 				</c:if>
@@ -65,24 +65,24 @@
 					<p>
 						<openmrs:hasPrivilege privilege='View PMTCT patients in ANC'>
 							<c:if test="${pmtcttag:encounterId(pmtctObjects.cpnencs,p.dateEnrolled,p.dateCompleted)!=''}">
-								<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/>&nbsp;<a href="module/@MODULE_ID@/viewCPNInfo.htm?patientId=${pmtctObjects.patient.patientId}&encounterId=${pmtcttag:encounterId(pmtctObjects.cpnencs,p.dateEnrolled,p.dateCompleted)}"><spring:message code="@MODULE_ID@.portlet.viewCPNInfo" /></a>
+								<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/>&nbsp;<a href="module/pmtct/viewCPNInfo.htm?patientId=${pmtctObjects.patient.patientId}&encounterId=${pmtcttag:encounterId(pmtctObjects.cpnencs,p.dateEnrolled,p.dateCompleted)}"><spring:message code="pmtct.portlet.viewCPNInfo" /></a>
 								<br />
 							</c:if>
 							
-							<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/>&nbsp;<a href="module/@MODULE_ID@/followupMotherForm.form?patientId=${pmtctObjects.patient.patientId}&edit=${p.dateCompleted==null}"><spring:message code="@MODULE_ID@.portlet.viewFollowupMotherInfo" /></a>
+							<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/>&nbsp;<a href="module/pmtct/followupMotherForm.form?patientId=${pmtctObjects.patient.patientId}&edit=${p.dateCompleted==null}"><spring:message code="pmtct.portlet.viewFollowupMotherInfo" /></a>
 							<br />
 						</openmrs:hasPrivilege>
 						
 						<openmrs:hasPrivilege privilege='View PMTCT patients in maternity'>
 							<c:if test="${pmtcttag:encounterId(pmtctObjects.maternityencs,p.dateEnrolled,p.dateCompleted)!=''}">
-								<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/>&nbsp;<a href="module/@MODULE_ID@/viewMaternityInfo.htm?patientId=${pmtctObjects.patient.patientId}&encounterId=${pmtcttag:encounterId(pmtctObjects.maternityencs,p.dateEnrolled,p.dateCompleted)}"><spring:message code="@MODULE_ID@.portlet.viewMaternityInfo" /></a>
+								<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/>&nbsp;<a href="module/pmtct/viewMaternityInfo.htm?patientId=${pmtctObjects.patient.patientId}&encounterId=${pmtcttag:encounterId(pmtctObjects.maternityencs,p.dateEnrolled,p.dateCompleted)}"><spring:message code="pmtct.portlet.viewMaternityInfo" /></a>
 								<br/>
 							</c:if>
 						</openmrs:hasPrivilege>
 						
 						<openmrs:hasPrivilege privilege='View PMTCT flowsheet'>
 							<br/>
-							**&nbsp;<a href="module/@MODULE_ID@/pmtctFlowsheet.list?patientId=${pmtctObjects.patient.patientId}"><b><spring:message code="@MODULE_ID@.portlet.flowsheet" /></b></a>
+							**&nbsp;<a href="module/pmtct/pmtctFlowsheet.list?patientId=${pmtctObjects.patient.patientId}"><b><spring:message code="pmtct.portlet.flowsheet" /></b></a>
 						</openmrs:hasPrivilege>
 					</p>
 				</c:if>
@@ -132,16 +132,16 @@
 				
 				
 				<c:if test="${p.dateCompleted==null}">
-					<h3 class="currentProgram"><openmrs:formatDate date="${p.dateEnrolled}"/> - <spring:message code="@MODULE_ID@.general.now"/></h3>
+					<h3 class="currentProgram"><openmrs:formatDate date="${p.dateEnrolled}"/> - <spring:message code="pmtct.general.now"/></h3>
 					<p>	
 						<openmrs:hasPrivilege privilege='Add Pediatric tests information'>
-							&rArr;&nbsp;<a href="module/@MODULE_ID@/childTestForm.form?patientId=${pmtctObjects.patient.patientId}&encounterType=${pmtctObjects.currentTest}"><spring:message code="@MODULE_ID@.portlet.addChildTestInfo" /></a>
+							&rArr;&nbsp;<a href="module/pmtct/childTestForm.form?patientId=${pmtctObjects.patient.patientId}&encounterType=${pmtctObjects.currentTest}"><spring:message code="pmtct.portlet.addChildTestInfo" /></a>
 							<br/>
 						</openmrs:hasPrivilege>
 						
 						<openmrs:hasPrivilege privilege='View PMTCT flowsheet'>
 							<br/>
-							**&nbsp;<a href="module/@MODULE_ID@/pmtctFlowsheet.list?patientId=${pmtctObjects.patient.patientId}"><b><spring:message code="@MODULE_ID@.portlet.flowsheet" /></b></a>
+							**&nbsp;<a href="module/pmtct/pmtctFlowsheet.list?patientId=${pmtctObjects.patient.patientId}"><b><spring:message code="pmtct.portlet.flowsheet" /></b></a>
 						</openmrs:hasPrivilege>
 					</p>
 				</c:if>
@@ -150,13 +150,13 @@
 					<h3 class="currentProgram"><openmrs:formatDate date="${p.dateEnrolled}"/> - <openmrs:formatDate date="${p.dateCompleted}"/></h3>
 					<p>
 						<openmrs:hasPrivilege privilege='View PMTCT pediatric tests'>				
-							<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/>&nbsp;<a href="module/@MODULE_ID@/childTestForm.form?patientId=${pmtctObjects.patient.patientId}&encounterType=${pmtctObjects.currentTest}"><spring:message code="@MODULE_ID@.portlet.addChildTestInfo" /></a>
+							<img border="0" src="${pageContext.request.contextPath}/images/checkmark.png"/>&nbsp;<a href="module/pmtct/childTestForm.form?patientId=${pmtctObjects.patient.patientId}&encounterType=${pmtctObjects.currentTest}"><spring:message code="pmtct.portlet.addChildTestInfo" /></a>
 							<br/>
 						</openmrs:hasPrivilege>
 						
 						<openmrs:hasPrivilege privilege='View PMTCT flowsheet'>
 							<br/>
-							**&nbsp;<a href="module/@MODULE_ID@/pmtctFlowsheet.list?patientId=${pmtctObjects.patient.patientId}"><b><spring:message code="@MODULE_ID@.portlet.flowsheet" /></b></a>
+							**&nbsp;<a href="module/pmtct/pmtctFlowsheet.list?patientId=${pmtctObjects.patient.patientId}"><b><spring:message code="pmtct.portlet.flowsheet" /></b></a>
 						</openmrs:hasPrivilege>						
 					</p>
 				</c:if>
@@ -200,7 +200,7 @@
 	</c:if> 
 	
 	<c:if test="${pmtctObjects.isInTheProgram == '0' && pmtctObjects.patient.gender =='F'}">
-		<!-- <spring:message code="@MODULE_ID@.general.error.she_is_not_in_pmtct_program" /> -->
+		<!-- <spring:message code="pmtct.general.error.she_is_not_in_pmtct_program" /> -->
 		<script type="text/javascript">
 			document.getElementById("pmtctTab").style.display="none";
 			document.getElementById("pmtct.pmtct").style.display="none";
@@ -208,7 +208,7 @@
 	</c:if>
 	
 	<c:if test="${pmtctObjects.patient.gender == 'M' && pmtctObjects.patient.age>pmtctObjects.maxAgeOfChildInPMTCT}">
-		<!-- <spring:message code="@MODULE_ID@.general.error.pmtctinfodonotdisplay_male" /> -->
+		<!-- <spring:message code="pmtct.general.error.pmtctinfodonotdisplay_male" /> -->
 		<script type="text/javascript">
 			document.getElementById("pmtctTab").style.display="none";
 			document.getElementById("pmtct.pmtct").style.display="none";

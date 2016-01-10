@@ -22,7 +22,10 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
+import org.hibernate.criterion.Expression;
+import org.openmrs.OrderType;
 import org.openmrs.api.context.Context;
 import org.openmrs.api.db.hibernate.DbSession;
 import org.openmrs.api.db.hibernate.DbSessionFactory;
@@ -1258,5 +1261,16 @@ public class HibernatePmtctDAO implements PmtctService {
 	private List<Object> execute(String sql) {
 		SQLQuery query = getSession().createSQLQuery(sql);
 		return query.list();
+	}
+	
+	@Override
+	public List<OrderType> getAllOrderTypes(boolean includeRetired) {
+		Criteria crit = sessionFactory.getCurrentSession().createCriteria(OrderType.class);
+		
+		if (includeRetired == false) {
+			crit.add(Expression.eq("retired", false));
+		}
+		
+		return crit.list();
 	}
 }

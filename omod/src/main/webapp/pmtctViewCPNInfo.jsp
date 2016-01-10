@@ -1,6 +1,6 @@
 <%@ include file="template/localIncludes.jsp"%>
 
-<!-- <openmrs:htmlInclude file="/moduleResources/@MODULE_ID@/scripts/print.js" />  -->
+<!-- <openmrs:htmlInclude file="/moduleResources/pmtct/scripts/print.js" />  -->
 
 
 <div id="contentPrintable">
@@ -9,24 +9,24 @@
 	<br/>
 	
 	<div id="encounterViewDiv">
-		<h2 style="display: inline;"><spring:message code="@MODULE_ID@.general.pmtctEncounterTitle"/></h2>
+		<h2 style="display: inline;"><spring:message code="pmtct.general.pmtctEncounterTitle"/></h2>
 		<c:if test="${encounter!=null}">(<a href="${pageContext.request.contextPath}/admin/encounters/encounter.form?encounterId=${encounter.encounterId}" title="<spring:message code="general.edit"/>"><spring:message code="general.edit"/></a>)</c:if>
 		<br/><br/>
 		
 		<div style="width: 90%;margin: auto auto auto auto;">
-			<a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${encounter.patient.patientId}"><spring:message code="@MODULE_ID@.general.viewPatientDashboard"/></a>
+			<a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${encounter.patient.patientId}"><spring:message code="pmtct.general.viewPatientDashboard"/></a>
 			 <!-- :: <span style="font-size: 15px" class="infoPatientLabel"><a href="${pageContext.request.contextPath}/admin/patients/patient.form?patientId=${encounter.patient.patientId}">${encounter.patient.personName}</a></span> -->
 		
-		<!-- <input type="button" onclick="printContent('contentPrintable');" class="list_exportBt" title="<spring:message code="@MODULE_ID@.print.description"/>" value="<spring:message code="@MODULE_ID@.print"/>"/> -->
+		<!-- <input type="button" onclick="printContent('contentPrintable');" class="list_exportBt" title="<spring:message code="pmtct.print.description"/>" value="<spring:message code="pmtct.print"/>"/> -->
 		
 		</div>
 		
-		<b class="boxHeader" style="width: 90%;margin: auto auto auto auto; margin-top: 4px;"><spring:message code="@MODULE_ID@.cpn.encounter.summary"/></b>
+		<b class="boxHeader" style="width: 90%;margin: auto auto auto auto; margin-top: 4px;"><spring:message code="pmtct.cpn.encounter.summary"/></b>
 		
 		<div class="box" style="width: 90%;margin: auto auto auto auto;">
 			<table>
 				<tr>
-					<td><spring:message code="@MODULE_ID@.cpn.cpnNumberTitle" /></td>
+					<td><spring:message code="pmtct.cpn.cpnNumberTitle" /></td>
 					<td class="infoPatientLabel">&nbsp;:&nbsp; ${pmtcttag:personIdentifier(encounter.patient,cpnNumberIdentifierID)}</td>
 				</tr>
 				<tr>
@@ -51,10 +51,10 @@
 		
 		<!-- <div id="list_container">
 		<div id="list_title">
-			<div class="list_title_msg"><spring:message code="@MODULE_ID@.cpn.pmtctDrugOrder"/></div>
+			<div class="list_title_msg"><spring:message code="pmtct.cpn.pmtctDrugOrder"/></div>
 			<div class="list_title_bts">
 				<form style="display: inline;" action="viewMaternityInfo.htm?patientId=${encounter.patient.patientId}&encounterId=${encounter.encounterId}&export=csv" method="post">
-					<input type="submit" class="list_exportBt" title="<spring:message code="@MODULE_ID@.exportToCSV"/>" value="CSV"/>
+					<input type="submit" class="list_exportBt" title="<spring:message code="pmtct.exportToCSV"/>" value="CSV"/>
 				</form>				
 			</div>
 			<div style="clear:both;"></div>

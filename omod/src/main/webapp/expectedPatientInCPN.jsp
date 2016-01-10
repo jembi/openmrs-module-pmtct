@@ -4,7 +4,7 @@
 
 <!-- *************************************** -->
 
-<openmrs:require privilege="View PMTCT patients in ANC" otherwise="/login.htm" redirect="/module/@MODULE_ID@/generalStatIncpn.list?category=cpn&type=1&page=1" />
+<openmrs:require privilege="View PMTCT patients in ANC" otherwise="/login.htm" redirect="/module/pmtct/generalStatIncpn.list?category=cpn&type=1&page=1" />
 
 <div id="list_container">
 <div id="list_title">
@@ -12,36 +12,36 @@
 	<div  class="list_title_bts">
 		<c:if test="${param.type=='2'}">
 			<form style="display: inline;" action="cpnMoisDeRapportage.list?category=cpn&type=${param.type}&page=1" method="post">
-				<span><spring:message code="@MODULE_ID@.month"/> : <select name="month">
+				<span><spring:message code="pmtct.month"/> : <select name="month">
 					<c:forEach items="${monthsList}" var="month" varStatus="status">
 						<option value="${status.count}" <c:if test="${param.month==status.count}">selected='selected'</c:if>><spring:message code="${month}"/></option>
 					</c:forEach>
 					</select>
-					&nbsp;&nbsp;<spring:message code="@MODULE_ID@.year"/> : 
+					&nbsp;&nbsp;<spring:message code="pmtct.year"/> : 
 					<select name="year">
 						<c:forEach items="${years}" var="yr">
 							<option value="${yr}" <c:if test="${param.year==yr}">selected='selected'</c:if>>${yr}</option>
 						</c:forEach>
 					</select>				
-					<input type="submit" class="list_exportBt" title="<spring:message code="@MODULE_ID@.tablelist.refresh"/>" value="<spring:message code="@MODULE_ID@.tablelist.refresh"/>"/>
+					<input type="submit" class="list_exportBt" title="<spring:message code="pmtct.tablelist.refresh"/>" value="<spring:message code="pmtct.tablelist.refresh"/>"/>
 				</span>
 			</form>
 			<openmrs:hasPrivilege privilege='Export Collective Patient Data'>
 				<form style="display: inline;" action="cpnMoisDeRapportage.list?category=cpn&type=2&page=1&export=csv" method="post">	
-					<input type="submit" class="list_exportBt" title="<spring:message code="@MODULE_ID@.tablelist.exportToCSV"/>" value="CSV"/>
+					<input type="submit" class="list_exportBt" title="<spring:message code="pmtct.tablelist.exportToCSV"/>" value="CSV"/>
 				</form>
 			</openmrs:hasPrivilege>
 		</c:if>
 		<c:if test="${param.type=='1'}">
 			<form action="generalStatIncpn.list?category=cpn&type=1&page=1" method="post" style="display: inline;">
-				<span><spring:message code="@MODULE_ID@.general.startDate"/> : <input type="text" name="startDate" size="11" value="${startDate}" onclick="showCalendar(this)" />
-					&nbsp;&nbsp;<spring:message code="@MODULE_ID@.general.endDate"/> : <input type="text" name="endDate" size="11" value="${endDate}" onclick="showCalendar(this)" />
-					&nbsp;&nbsp;<input type="submit" class="list_exportBt" value="<spring:message code="@MODULE_ID@.tablelist.refresh"/>" title="<spring:message code="@MODULE_ID@.tablelist.refresh"/>"/>
+				<span><spring:message code="pmtct.general.startDate"/> : <input type="text" name="startDate" size="11" value="${startDate}" onclick="showCalendar(this)" />
+					&nbsp;&nbsp;<spring:message code="pmtct.general.endDate"/> : <input type="text" name="endDate" size="11" value="${endDate}" onclick="showCalendar(this)" />
+					&nbsp;&nbsp;<input type="submit" class="list_exportBt" value="<spring:message code="pmtct.tablelist.refresh"/>" title="<spring:message code="pmtct.tablelist.refresh"/>"/>
 				</span>
 			</form>
 			<openmrs:hasPrivilege privilege='Export Collective Patient Data'>
 				<form style="display: inline;" action="generalStatIncpn.list?category=cpn&type=1&page=1&export=csv" method="post">	
-					<input type="submit" class="list_exportBt" title="<spring:message code="@MODULE_ID@.tablelist.exportToCSV"/>" value="CSV"/>
+					<input type="submit" class="list_exportBt" title="<spring:message code="pmtct.tablelist.exportToCSV"/>" value="CSV"/>
 				</form>	
 			</openmrs:hasPrivilege>
 		</c:if>
@@ -49,7 +49,7 @@
 		<c:if test="${param.type=='3'}">
 			<openmrs:hasPrivilege privilege='Export Collective Patient Data'>
 				<form style="display: inline;" action="cpnCouplesDiscordant.list?category=cpn&type=3&page=1&export=csv" method="post">	
-					<input type="submit" class="list_exportBt" title="<spring:message code="@MODULE_ID@.tablelist.exportToCSV"/>" value="CSV"/>
+					<input type="submit" class="list_exportBt" title="<spring:message code="pmtct.tablelist.exportToCSV"/>" value="CSV"/>
 				</form>	
 			</openmrs:hasPrivilege>
 		</c:if>	
@@ -59,17 +59,17 @@
 <table id="list_data">
 	<tr>
 		<th class="columnHeader">No.</th>
-		<th class="columnHeader"><spring:message code="@MODULE_ID@.general.identifier"/></th>
+		<th class="columnHeader"><spring:message code="pmtct.general.identifier"/></th>
 		<openmrs:hasPrivilege privilege='View Patient Names'>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.general.names"/></th>
+			<th class="columnHeader"><spring:message code="pmtct.general.names"/></th>
 		</openmrs:hasPrivilege>
 		<th class="columnHeader"><spring:message code="Person.birthdate"/></th>
 		<th class="columnHeader"><spring:message code="Program.dateEnrolled"/></th>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.cpn.cpnDate"/></th>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.cpn.dpa"/></th>
+			<th class="columnHeader"><spring:message code="pmtct.cpn.cpnDate"/></th>
+			<th class="columnHeader"><spring:message code="pmtct.cpn.dpa"/></th>
 		<c:if test="${param.type=='1'}">
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.cpn.hivStatus"/></th>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.cpn.deliveryDate"/></th>
+			<th class="columnHeader"><spring:message code="pmtct.cpn.hivStatus"/></th>
+			<th class="columnHeader"><spring:message code="pmtct.cpn.deliveryDate"/></th>
 		</c:if>
 	</tr>
 	<c:if test="${empty numberOfPages}">
@@ -79,7 +79,7 @@
 		<c:if test="${param.type!='1'}">
 			<c:set var="trSize" value="7"/>
 		</c:if>
-		<tr><td colspan="${trSize}"><center><spring:message code="@MODULE_ID@.tablelist.empty"/></center></td></tr>
+		<tr><td colspan="${trSize}"><center><spring:message code="pmtct.tablelist.empty"/></center></td></tr>
 		<c:remove var="trSize" />
 	</c:if>
 	<c:forEach items="${patientList}" var="patient" varStatus="status">
@@ -88,8 +88,8 @@
 			<c:set var="matEnc" value="${pmtcttag:lastMaternityEncounterByPatientId(patient[1])}"/>
 		
 			<tr class="${status.count%2!=0?'even':''}">
-				<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[1]}" title="<spring:message code="@MODULE_ID@.general.viewPatientDashboard"/>">${((param.page-1)*pageSize)+status.count}.</a></td>
-				<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[1]}" title="<spring:message code="@MODULE_ID@.general.viewPatientDashboard"/>">${pmtcttag:patientIdentifier(patient[1])}</a></td>
+				<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[1]}" title="<spring:message code="pmtct.general.viewPatientDashboard"/>">${((param.page-1)*pageSize)+status.count}.</a></td>
+				<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[1]}" title="<spring:message code="pmtct.general.viewPatientDashboard"/>">${pmtcttag:patientIdentifier(patient[1])}</a></td>
 				<openmrs:hasPrivilege privilege='View Patient Names'>
 					<td class="rowValue">${pmtcttag:personName(patient[1])}</td>
 				</openmrs:hasPrivilege>

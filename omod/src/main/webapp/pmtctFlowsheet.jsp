@@ -5,11 +5,11 @@
 <openmrs:portlet url="patientHeader" id="patientDashboardHeader" patientId="${patient.patientId}"/>
 <br/>
 
-<h2 style="display:inline;"><spring:message code="@MODULE_ID@.portlet.flowsheet"/></h2>
+<h2 style="display:inline;"><spring:message code="pmtct.portlet.flowsheet"/></h2>
 <br/><br/>
 
 <div style="width: 90%;margin: auto auto auto auto;">
-	<a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient.patientId}"><spring:message code="@MODULE_ID@.general.viewPatientDashboard"/></a>
+	<a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient.patientId}"><spring:message code="pmtct.general.viewPatientDashboard"/></a>
 	 :: <span style="font-size: 15px" class="infoPatientLabel"><a href="${pageContext.request.contextPath}/admin/patients/patient.form?patientId=${patient.patientId}">${patient.personName}</a></span>
 </div>
 
@@ -31,7 +31,7 @@
 		</div>
 		<table style="width:95%; margin-left:5px;"  border="0">
 		<c:if test="${empty encounter.obs}">
-		<tr><td colspan="3"><spring:message code="@MODULE_ID@.tablelist.empty"/></c:if></td></tr>
+		<tr><td colspan="3"><spring:message code="pmtct.tablelist.empty"/></c:if></td></tr>
 			<c:forEach var="obs" items="${encounter.obs}" varStatus="status">
 				<tr style="background:${status.count%2!=0?'whitesmoke':''}">
 					<td class="flowsheetObsName">${pmtcttag:observationConceptName(obs)}</td>

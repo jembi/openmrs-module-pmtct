@@ -2,29 +2,29 @@
 
 <!-- *************************************** -->
 
-<h2 style="display: inline;"><spring:message code="@MODULE_ID@.overviewBoxTitle"/> :: 
-<span style="color:#8FABC7;"><spring:message code="@MODULE_ID@.config.title"/></span></h2>
+<h2 style="display: inline;"><spring:message code="pmtct.overviewBoxTitle"/> :: 
+<span style="color:#8FABC7;"><spring:message code="pmtct.config.title"/></span></h2>
 <br/><br/>
 
 <div style="width: 90%;margin: auto auto auto auto; font-size: 100%">
 	<c:if test="${pmtctConfigured.propertyValue=='true'}">
-		<div class="box"><spring:message code="@MODULE_ID@.config.configuredproperly"/></div>
+		<div class="box"><spring:message code="pmtct.config.configuredproperly"/></div>
 	</c:if>
 	
 	<c:if test="${pmtctConfigured.propertyValue=='false'}">
-		<div style="border: 1px solid red; color: red; padding: 3px;"><spring:message code="@MODULE_ID@.config.notConfigured"/></div>
+		<div style="border: 1px solid red; color: red; padding: 3px;"><spring:message code="pmtct.config.notConfigured"/></div>
 	</c:if>
 </div>
 <br/>
 
 <form action="config.htm?edit=true" method="post">
 
-<!-- <b class="boxHeader" style="width: 90%;margin: auto auto auto auto;"><spring:message code="@MODULE_ID@.config.criticalLevelOfCD4Count"/></b>
+<!-- <b class="boxHeader" style="width: 90%;margin: auto auto auto auto;"><spring:message code="pmtct.config.criticalLevelOfCD4Count"/></b>
 <div class="box" style="width: 90%;margin: auto auto auto auto;">
 	<table class="configTable">
 			<tr>
 				<td class="configDescription">
-					<spring:message code="@MODULE_ID@.config.displayHelpMessage"/>
+					<spring:message code="pmtct.config.displayHelpMessage"/>
 				</td>
 				<td class="configSelect">
 					<select name="displayHelpMessage">
@@ -38,7 +38,7 @@
 </div>
 <br/> -->
 
-<b class="boxHeader" style="width: 90%;margin: auto auto auto auto;"><spring:message code="@MODULE_ID@.config.types"/></b>
+<b class="boxHeader" style="width: 90%;margin: auto auto auto auto;"><spring:message code="pmtct.config.types"/></b>
 <div class="box" style="width: 90%;margin: auto auto auto auto;">
 	
 	<table class="configTable">
@@ -98,7 +98,7 @@
 </div>
 <br/>
 
-<b class="boxHeader" style="width: 90%;margin: auto auto auto auto;"><spring:message code="@MODULE_ID@.config.encounterTypes"/></b>
+<b class="boxHeader" style="width: 90%;margin: auto auto auto auto;"><spring:message code="pmtct.config.encounterTypes"/></b>
 <div class="box" style="width: 90%;margin: auto auto auto auto;">
 	
 	<table class="configTable">
@@ -122,7 +122,7 @@
 </div>
 <br/>
 
-<b class="boxHeader" style="width: 90%;margin: auto auto auto auto;"><spring:message code="@MODULE_ID@.config.concepts"/></b>
+<b class="boxHeader" style="width: 90%;margin: auto auto auto auto;"><spring:message code="pmtct.config.concepts"/></b>
 <div class="box" style="width: 90%;margin: auto auto auto auto;">
 	
 	<table class="configTable">
@@ -140,11 +140,11 @@
 </div>
 <br/>
 
-<div style="width: 90%;margin: auto auto auto auto;"><span title="${pmtctConfigured.description}"><input <c:if test="${pmtctConfigured.propertyValue=='true' || pmtctConfigured.propertyValue=='TRUE'}">checked='checked'</c:if> type="checkbox" name="config_chkbx" value="1" id="config_chkbx_id"/><label for="config_chkbx_id"><spring:message code="@MODULE_ID@.config.configuredproperly"/></label></span></div>
+<div style="width: 90%;margin: auto auto auto auto;"><span title="${pmtctConfigured.description}"><input <c:if test="${pmtctConfigured.propertyValue=='true' || pmtctConfigured.propertyValue=='TRUE'}">checked='checked'</c:if> type="checkbox" name="config_chkbx" value="1" id="config_chkbx_id"/><label for="config_chkbx_id"><spring:message code="pmtct.config.configuredproperly"/></label></span></div>
 <br/>
 
 <div style="width: 90%;margin: auto auto auto auto;">
-	<input id="save" type="button" value="<spring:message code="@MODULE_ID@.config.save.configurations"/>" style="min-width: 150px;"/>
+	<input id="save" type="button" value="<spring:message code="pmtct.config.save.configurations"/>" style="min-width: 150px;"/>
 </div>
 </form>
 
@@ -153,7 +153,7 @@
 	
 	$j(document).ready( function() {
 		$j("#save").click(function(){
-			if (confirm("<spring:message code='@MODULE_ID@.general.message.confirm.save'/>")) {
+			if (confirm("<spring:message code='pmtct.general.message.confirm.save'/>")) {
 				this.form.submit();
 	        }
 		});

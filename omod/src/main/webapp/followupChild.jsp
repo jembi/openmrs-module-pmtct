@@ -11,21 +11,21 @@
 <openmrs:portlet url="patientHeader" id="patientDashboardHeader" patientId="${patient.patientId}"/>
 <br/>
 
-<h2 style="display:inline;"><spring:message code="@MODULE_ID@.pmtctTitle"/> : </h2><span style="font-size: 15px" class="infoPatientLabel"><spring:message code="@MODULE_ID@.cf.title" /></span>
+<h2 style="display:inline;"><spring:message code="pmtct.pmtctTitle"/> : </h2><span style="font-size: 15px" class="infoPatientLabel"><spring:message code="pmtct.cf.title" /></span>
 <c:if test="${encounter!=null}">(<a href="${pageContext.request.contextPath}/admin/encounters/encounter.form?encounterId=${encounter.encounterId}" title="<spring:message code="general.edit"/>"><spring:message code="general.edit"/></a>)</c:if>
 <br/><br/>
 
 <div style="width: 90%;margin: auto auto auto auto; margin-bottom: 4px;">
-	<a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient.patientId}"><spring:message code="@MODULE_ID@.general.viewPatientDashboard"/></a>
+	<a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient.patientId}"><spring:message code="pmtct.general.viewPatientDashboard"/></a>
 	 <!-- :: <span style="font-size: 15px" class="infoPatientLabel"><a href="${pageContext.request.contextPath}/admin/patients/patient.form?patientId=${patient.patientId}">${patient.personName}</a></span> -->
 </div>
 
 <!-- <div id="list_container">
 <div id="list_title">
-	<div class="list_title_msg"><spring:message code="@MODULE_ID@.cpn.pmtctDrugOrder"/></div>
+	<div class="list_title_msg"><spring:message code="pmtct.cpn.pmtctDrugOrder"/></div>
 	<div class="list_title_bts">
 		<form style="display: inline;" action="childTestForm.form?patientId=${patient.patientId}&encounterType=${param.encounterType}&export=csv" method="post">
-			<input type="submit" class="list_exportBt" title="<spring:message code="@MODULE_ID@.exportToCSV"/>" value="CSV"/>
+			<input type="submit" class="list_exportBt" title="<spring:message code="pmtct.exportToCSV"/>" value="CSV"/>
 		</form>				
 	</div>
 	<div style="clear:both;"></div>
@@ -44,7 +44,7 @@
 	<c:forEach items="${drugOrders}" var="drugOrder" varStatus="status">
 		<c:if test="${!empty drugOrder.drug}">
 			<tr class="${status.count%2!=0?'even':''}">
-				<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient.patientId}" title="<spring:message code="@MODULE_ID@.general.viewPatientDashboard"/>">${((param.page-1)*pageSize)+status.count}.</a></td>
+				<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient.patientId}" title="<spring:message code="pmtct.general.viewPatientDashboard"/>">${((param.page-1)*pageSize)+status.count}.</a></td>
 				<td class="rowValue"><a class="patientRegimenDrugName" href="${pageContext.request.contextPath}/admin/orders/orderDrug.form?orderId=${drugOrder.orderId}">${drugOrder.drug.name}</a></td>
 				<td class="rowValue">${drugOrder.dose} ${drugOrder.units}</td>
 				<td class="rowValue">${drugOrder.frequency}</td>
@@ -71,17 +71,17 @@
 			<table>
 				<tr>
 					<td><input type="radio" '<c:if test="${param.encounterType==pcrEncId}">checked="checked"</c:if>' onclick=document.location.href='childTestForm.form?patientId=${patient.patientId}&encounterType=${pcrEncId}'; id="pcrTest" name="encounterTypeId" value="${pcrEncId}" />
-						<label for="pcrTest"> <spring:message code="@MODULE_ID@.cf.pcrTestTitle" /></label>
+						<label for="pcrTest"> <spring:message code="pmtct.cf.pcrTestTitle" /></label>
 					</td>
 				</tr>
 				<tr>
 					<td><input type="radio"'<c:if test="${param.encounterType==ser9MonthEncId}">checked="checked"</c:if>' onclick=document.location.href='childTestForm.form?patientId=${patient.patientId}&encounterType=${ser9MonthEncId}'; id="serology6Month" name="encounterTypeId" value="${ser9MonthEncId}" />
-						<label for="serology6Month"> <spring:message code="@MODULE_ID@.cf.serology9MonthsTitle" /> </label>
+						<label for="serology6Month"> <spring:message code="pmtct.cf.serology9MonthsTitle" /> </label>
 					</td>
 				</tr>
 				<tr>
 					<td><input type="radio"'<c:if test="${param.encounterType==ser18MonthEncId}">checked="checked"</c:if>' onclick=document.location.href='childTestForm.form?patientId=${patient.patientId}&encounterType=${ser18MonthEncId}'; id="serology18Month" name="encounterTypeId" value="${ser18MonthEncId}" />
-						<label for="serology18Month"> <spring:message code="@MODULE_ID@.cf.serology18MonthsTitle" /></label>
+						<label for="serology18Month"> <spring:message code="pmtct.cf.serology18MonthsTitle" /></label>
 					</td>
 				</tr>
 			</table>
@@ -90,13 +90,13 @@
 		<div style="width: 74%; float: right; border: 1px solid #8FABC7; -moz-border-radius: 3px; padding: 2px;">
 			<c:if test="${encounter==null}">
 			
-			<b class="boxHeader"><spring:message code="@MODULE_ID@.general.requiredInfoTitle" /></b>
+			<b class="boxHeader"><spring:message code="pmtct.general.requiredInfoTitle" /></b>
 			<div class="box">
 				<table>
 					<tr>
-						<td><spring:message code="@MODULE_ID@.cf.scheduledVisitDateTitle" /></td>
+						<td><spring:message code="pmtct.cf.scheduledVisitDateTitle" /></td>
 						<td><c:if test="${displayHelpMessage=='true'}">
-								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 						</c:if></td>
 						<td class="infoPatientLabel">${returnDateVisit}</td>
 						<td></td>
@@ -104,7 +104,7 @@
 					<tr>
 						<td><spring:message code="Encounter.datetime"/></td>
 						<td><c:if test="${displayHelpMessage=='true'}">
-								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 						</c:if></td>
 						<td><spring:bind path="encounterDate"><input name="${status.expression}" value="${status.value}" size="11" type="text" onclick="showCalendar(this)" /></spring:bind></td>
 						<td><form:errors cssClass="error" path="encounterDate" /></td>
@@ -112,7 +112,7 @@
 					<tr>
 						<td><spring:message code="Encounter.location" /></td>
 						<td><c:if test="${displayHelpMessage=='true'}">
-								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 						</c:if></td>
 						<td><spring:bind path="location"><openmrs_tag:locationField formFieldName="${status.expression}" initialValue="${status.value}" /></spring:bind></td>
 						<td><form:errors cssClass="error" path="location" /></td>
@@ -120,7 +120,7 @@
 					<tr>
 						<td><spring:message code="Encounter.provider" /></td>
 						<td><c:if test="${displayHelpMessage=='true'}">
-								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 						</c:if></td>
 						<td><spring:bind path="provider"><openmrs_tag:userField roles="Provider" formFieldName="${status.expression}" initialValue="${status.value}" /></spring:bind></td>
 						<td><form:errors cssClass="error" path="provider" /></td>
@@ -129,15 +129,15 @@
 			</div>
 			<br />
 			
-			<b class="boxHeader"><c:if test="${param.encounterType!=ser18MonthEncId}"><spring:message code="@MODULE_ID@.cpn.hivStatus" /></c:if>
-				<c:if test="${param.encounterType==ser18MonthEncId}"><spring:message code="@MODULE_ID@.cf.hivFinalStatusTitle" /></c:if></b>
+			<b class="boxHeader"><c:if test="${param.encounterType!=ser18MonthEncId}"><spring:message code="pmtct.cpn.hivStatus" /></c:if>
+				<c:if test="${param.encounterType==ser18MonthEncId}"><spring:message code="pmtct.cf.hivFinalStatusTitle" /></c:if></b>
 	
 			<div class="box">
 				<table>			
 					<tr>
 						<td>${pmtcttag:conceptNameById(dateHIVTestId)}</td>
 						<td><c:if test="${displayHelpMessage=='true'}">
-								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 						</c:if></td>
 						<td><spring:bind path="hivTestDate"><input name="${status.expression}" value="${status.value}" size="11" type="text" onclick="showCalendar(this)" /></spring:bind></td>
 						<td><form:errors cssClass="error" path="hivTestDate" /></td>
@@ -145,7 +145,7 @@
 					<tr>
 						<td>${pmtcttag:conceptNameById(resultHIVTestId)}</td>
 						<td><c:if test="${displayHelpMessage=='true'}">
-								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 						</c:if></td>
 						<td><spring:bind path="resultOfHivTest">
 							<select id="<c:if test="${param.encounterType==ser18MonthEncId}">hivStatus</c:if>" name="${status.expression}">
@@ -161,7 +161,7 @@
 					<tr>
 						<td>${pmtcttag:conceptNameById(dateOfReturnedResultId)}</td>
 						<td><c:if test="${displayHelpMessage=='true'}">
-								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 						</c:if></td>
 						<td><spring:bind path="dateOfReturnedResult"><input name="${status.expression}" value="${status.value}" size="11" type="text" onclick="showCalendar(this)" /></spring:bind></td>
 						<td><form:errors cssClass="error" path="dateOfReturnedResult" /></td>
@@ -170,7 +170,7 @@
 						<tr>
 							<td>${pmtcttag:conceptNameById(returnVisitDateId)}</td>
 							<td><c:if test="${displayHelpMessage=='true'}">
-									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+									<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 							</c:if></td>
 							<td><spring:bind path="returnedVisitDate"><input name="${status.expression}" value="${status.value}" size="11" type="text" onclick="showCalendar(this)" /></spring:bind></td>
 							<td><form:errors cssClass="error" path="returnedVisitDate" /></td>
@@ -178,7 +178,7 @@
 						<tr>
 							<td></td>
 							<td></td>
-							<td><input type="button" id="submit_Enc" value="<spring:message code="@MODULE_ID@.general.save" />"></td>
+							<td><input type="button" id="submit_Enc" value="<spring:message code="pmtct.general.save" />"></td>
 							<td></td>
 						</tr>
 					</c:if>
@@ -186,13 +186,13 @@
 			</div>
 			<c:if test="${param.encounterType==ser18MonthEncId}">
 				<br/>
-				<h3 class="exitCare"><spring:message code="@MODULE_ID@.cf.reasonExitCareTitle" /></h3>
+				<h3 class="exitCare"><spring:message code="pmtct.cf.reasonExitCareTitle" /></h3>
 				<div class="divBox">
 				<table>
 					<tr class="exitCare">
 						<td>${pmtcttag:conceptNameById(reasonForExitingCareId)}</td>
 						<td><c:if test="${displayHelpMessage=='true'}">
-								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="@MODULE_ID@.help"/>"/></span>
+								<span class="displayHelp"><img border="0" src="<openmrs:contextPath/>/images/info.gif" title="<spring:message code="pmtct.help"/>"/></span>
 						</c:if></td>
 						<td><spring:bind path="reasonOfExitingCare"><select id="reasonOfExitingCare" name="${status.expression}">
 							<option value="0">--</option>
@@ -205,7 +205,7 @@
 					<tr>
 						<td></td>
 						<td></td>
-						<td><input type="button" id="submit_EncSer18Month" value="<spring:message code="@MODULE_ID@.general.save" />"></td>
+						<td><input type="button" id="submit_EncSer18Month" value="<spring:message code="pmtct.general.save" />"></td>
 						<td></td>
 					</tr>
 				</table>
@@ -215,7 +215,7 @@
 	
 		<c:if test="${encounter!=null}">
 			
-			<b class="boxHeader"><spring:message code="@MODULE_ID@.cpn.encounter.summary"/></b>
+			<b class="boxHeader"><spring:message code="pmtct.cpn.encounter.summary"/></b>
 	
 			<div class="box">
 				<table>
@@ -277,14 +277,14 @@
 		$j("#hivStatus").change();
 
 		$j("#submit_Enc").click(function(){
-			if (confirm("<spring:message code='@MODULE_ID@.general.message.confirm.save'/>")){
+			if (confirm("<spring:message code='pmtct.general.message.confirm.save'/>")){
 					this.form.submit();
 			}
 		});
 
 		$j("#reasonOfExitingCareError").hide();
 		$j("#submit_EncSer18Month").click(function(){
-			if (confirm("<spring:message code='@MODULE_ID@.general.message.confirm.save'/>")){
+			if (confirm("<spring:message code='pmtct.general.message.confirm.save'/>")){
 				//if($j("#reasonOfExitingCare").val()==$j("#positiveId").val()){
 				//alert($j("#hivStatus").val()+"-"+$j("#positiveId").val());
 				if($j("#hivStatus").val()==$j("#positiveId").val()){

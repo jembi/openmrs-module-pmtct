@@ -15,6 +15,7 @@ package org.openmrs.module.pmtct.web.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,8 +24,8 @@ import org.apache.commons.logging.LogFactory;
 import org.openmrs.GlobalProperty;
 import org.openmrs.api.AdministrationService;
 import org.openmrs.api.context.Context;
-import org.openmrs.module.mohtracportal.service.MohTracPortalService;
 import org.openmrs.module.pmtct.PMTCTModuleTag;
+import org.openmrs.module.pmtct.db.PmtctService;
 import org.openmrs.module.pmtct.util.PMTCTConfigurationUtils;
 import org.openmrs.web.WebConstants;
 import org.springframework.web.servlet.ModelAndView;
@@ -72,7 +73,7 @@ public class PmtctConfigurationController extends ParameterizableViewController 
 //			pmtctConfig.put("existingAttributeTypes", Context.getPersonService().getAllPersonAttributeTypes());
 			pmtctConfig.put("existingEncTypes", Context.getEncounterService().getAllEncounterTypes());
 			pmtctConfig.put("existingIdentifierTypes", Context.getPatientService().getAllPatientIdentifierTypes());
-			pmtctConfig.put("existingDrugOrderTypes", Context.getService(MohTracPortalService.class).getAllOrderTypes(false));
+			pmtctConfig.put("existingDrugOrderTypes", Context.getService(PmtctService.class).getAllOrderTypes(false));
 			pmtctConfig.put("existingRelationshipTypes", Context.getPersonService().getAllRelationshipTypes());
 			
 			mav.addObject("pmtctConfigured", Context.getAdministrationService().getGlobalPropertyObject("pmtct.configured"));

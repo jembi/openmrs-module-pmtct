@@ -1,9 +1,9 @@
 <tr class="${status.count%2!=0?'even':''}">
-	<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[0]}" title="<spring:message code="@MODULE_ID@.general.viewPatientDashboard"/>">${((param.page-1)*pageSize)+status.count}.</a></td>
-	<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[0]}" title="<spring:message code="@MODULE_ID@.general.viewPatientDashboard"/>">${pmtcttag:patientIdentifier(patient[0])}</a></td>
+	<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[0]}" title="<spring:message code="pmtct.general.viewPatientDashboard"/>">${((param.page-1)*pageSize)+status.count}.</a></td>
+	<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[0]}" title="<spring:message code="pmtct.general.viewPatientDashboard"/>">${pmtcttag:patientIdentifier(patient[0])}</a></td>
 	<openmrs:hasPrivilege privilege='View Patient Names'>
 		<td class="rowValue" style="color:${pmtcttag:isPatientDead(patient[0])}">${pmtcttag:personName(patient[0])}</td>
-		<td class="rowValue">${pmtcttag:personName(mother.patientId)}&nbsp;(<a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${mother.patientId}" title="<spring:message code="@MODULE_ID@.general.viewPatientDashboard"/>">${pmtcttag:patientIdentifier(mother.patientId)}</a>)</td>
+		<td class="rowValue">${pmtcttag:personName(mother.patientId)}&nbsp;(<a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${mother.patientId}" title="<spring:message code="pmtct.general.viewPatientDashboard"/>">${pmtcttag:patientIdentifier(mother.patientId)}</a>)</td>
 	</openmrs:hasPrivilege>
 	<td class="rowValue"><img border="0"
 					src="<c:if test="${patient[1]=='F'}"><openmrs:contextPath/>/images/female.gif</c:if><c:if test="${patient[1]=='M'}"><openmrs:contextPath/>/images/male.gif</c:if>" /></td>

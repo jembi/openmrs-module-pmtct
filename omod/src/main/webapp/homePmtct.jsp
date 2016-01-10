@@ -3,26 +3,26 @@
 
 <!-- *************************************** -->
 
-<openmrs:require privilege="View patients in PMTCT" otherwise="/login.htm" redirect="/module/@MODULE_ID@/patientInPmtct.list?page=1" />
+<openmrs:require privilege="View patients in PMTCT" otherwise="/login.htm" redirect="/module/pmtct/patientInPmtct.list?page=1" />
 
 <div id="list_container">
-<!-- <span><a href="#" id="viewChart"><spring:message code="@MODULE_ID@.tablelist.viewChart"/></a></span> -->
+<!-- <span><a href="#" id="viewChart"><spring:message code="pmtct.tablelist.viewChart"/></a></span> -->
 <div id="list_title">
-	<div class="list_title_msg"><spring:message code="@MODULE_ID@.patientInPmtctTitle"/></div>
+	<div class="list_title_msg"><spring:message code="pmtct.patientInPmtctTitle"/></div>
 	<div class="list_title_bts">
 		<openmrs:hasPrivilege privilege='Export Collective Patient Data'>
 			<form action="patientInPmtct.list" method="get" style="display: inline;">
 				<input type="hidden" name="page" value="1"/>
-				<span title="<spring:message code="@MODULE_ID@.tablelist.periodBasedOnEnrollmentDate"/>">
-					<input type="checkbox" <c:if test="${param.ckbxPeriod=='0'}">checked=checked</c:if> id="ckbxPeriod" name="ckbxPeriod" value="<c:if test="${param.ckbxPeriod=='0'}">0</c:if><c:if test="${param.ckbxPeriod!='0'}">1</c:if>"/><label for="ckbxPeriod"><spring:message code="@MODULE_ID@.tablelist.period"/></label>
-					<span id="period"><spring:message code="@MODULE_ID@.general.startDate"/> : <input type="text" name="startDate" size="11" value="${param.startDate}" onclick="showCalendar(this)" />
-						&nbsp;&nbsp;<spring:message code="@MODULE_ID@.general.endDate"/> : <input type="text" name="endDate" size="11" value="${param.endDate}" onclick="showCalendar(this)" />
-						&nbsp;&nbsp;<input type="submit" class="list_exportBt" value="<spring:message code="@MODULE_ID@.tablelist.refresh"/>" title="<spring:message code="@MODULE_ID@.tablelist.refresh"/>"/>
+				<span title="<spring:message code="pmtct.tablelist.periodBasedOnEnrollmentDate"/>">
+					<input type="checkbox" <c:if test="${param.ckbxPeriod=='0'}">checked=checked</c:if> id="ckbxPeriod" name="ckbxPeriod" value="<c:if test="${param.ckbxPeriod=='0'}">0</c:if><c:if test="${param.ckbxPeriod!='0'}">1</c:if>"/><label for="ckbxPeriod"><spring:message code="pmtct.tablelist.period"/></label>
+					<span id="period"><spring:message code="pmtct.general.startDate"/> : <input type="text" name="startDate" size="11" value="${param.startDate}" onclick="showCalendar(this)" />
+						&nbsp;&nbsp;<spring:message code="pmtct.general.endDate"/> : <input type="text" name="endDate" size="11" value="${param.endDate}" onclick="showCalendar(this)" />
+						&nbsp;&nbsp;<input type="submit" class="list_exportBt" value="<spring:message code="pmtct.tablelist.refresh"/>" title="<spring:message code="pmtct.tablelist.refresh"/>"/>
 					</span>
 				</span>
 			</form>
 			<form style="display: inline;" action="patientInPmtct.list?${parameters}&export=csv" method="post">
-				<input type="submit" class="list_exportBt" title="<spring:message code="@MODULE_ID@.exportToCSV"/>" value="CSV"/>
+				<input type="submit" class="list_exportBt" title="<spring:message code="pmtct.exportToCSV"/>" value="CSV"/>
 			</form>
 		</openmrs:hasPrivilege>			
 	</div>
@@ -31,20 +31,20 @@
 <table id="list_data">
 	<tr>
 		<th class="columnHeader">No.</th>
-		<th class="columnHeader"><spring:message code="@MODULE_ID@.general.identifier"/></th>
+		<th class="columnHeader"><spring:message code="pmtct.general.identifier"/></th>
 		<openmrs:hasPrivilege privilege='View Patient Names'>
-			<th class="columnHeader"><spring:message code="@MODULE_ID@.general.names"/></th>
+			<th class="columnHeader"><spring:message code="pmtct.general.names"/></th>
 		</openmrs:hasPrivilege>
 		<th class="columnHeader"><spring:message code="Person.gender"/></th>
 		<th class="columnHeader"><spring:message code="Person.birthdate"/></th>
 		<th class="columnHeader"><spring:message code="Program.dateEnrolled"/></th>
-		<th class="columnHeader"><spring:message code="@MODULE_ID@.cpn.hivStatus"/></th>
+		<th class="columnHeader"><spring:message code="pmtct.cpn.hivStatus"/></th>
 	</tr>
-	<c:if test="${empty numberOfPages}"><tr><td colspan="7"><center><spring:message code="@MODULE_ID@.tablelist.empty"/></center></td></tr></c:if>
+	<c:if test="${empty numberOfPages}"><tr><td colspan="7"><center><spring:message code="pmtct.tablelist.empty"/></center></td></tr></c:if>
 	<c:forEach items="${patientList}" var="patient" varStatus="status">
 		<tr class="${status.count%2!=0?'even':''}">
-			<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[0]}" title="<spring:message code="@MODULE_ID@.general.viewPatientDashboard"/>">${((param.page-1)*pageSize)+status.count}.</a></td>
-			<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[0]}" title="<spring:message code="@MODULE_ID@.general.viewPatientDashboard"/>">${pmtcttag:patientIdentifier(patient[0])}</a></td>
+			<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[0]}" title="<spring:message code="pmtct.general.viewPatientDashboard"/>">${((param.page-1)*pageSize)+status.count}.</a></td>
+			<td class="rowValue"><a href="<openmrs:contextPath/>/patientDashboard.form?patientId=${patient[0]}" title="<spring:message code="pmtct.general.viewPatientDashboard"/>">${pmtcttag:patientIdentifier(patient[0])}</a></td>
 			<openmrs:hasPrivilege privilege='View Patient Names'>
 				<td class="rowValue">${pmtcttag:personName(patient[0])}</td>
 			</openmrs:hasPrivilege>
@@ -73,7 +73,7 @@
 </div>
 
 <!-- <div id="chartHolder" style="display: none;">
-	<span><a href="#" id="viewData"><spring:message code="@MODULE_ID@.tablelist.viewData"/></a></span>
+	<span><a href="#" id="viewData"><spring:message code="pmtct.tablelist.viewData"/></a></span>
 	<div class="box" style="text-align: center;">
 		<img src="chart.htm?chart=hivStatus" width="400" height="300" />
 	</div>

@@ -262,7 +262,7 @@
 				//alert(new Date($j("#returnVisitDate_"+count).val()));
 			
 				if(!valid){
-					$j("#errorDivId").html("<spring:message code='@MODULE_ID@.error.fix'/>");
+					$j("#errorDivId").html("<spring:message code='pmtct.error.fix'/>");
 					$j("#errorDivId").addClass("error");
 				} else {
 					$j("#errorDivId").html("");

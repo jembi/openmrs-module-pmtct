@@ -15,7 +15,7 @@ package org.openmrs.module.pmtct.db;
 
 import java.util.List;
 
-import org.openmrs.module.pmtct.util.PMTCTConstants;
+import org.openmrs.OrderType;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -86,4 +86,6 @@ public interface PmtctService {
 	                                                                                                         throws Exception;
 	
 	public List<Object> getInfantByMoisDeRapportageByInfantTest(int month, int year, int test) throws Exception;
+
+	List<OrderType> getAllOrderTypes(boolean includeRetired);
 }
